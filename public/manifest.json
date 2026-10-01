@@ -1,0 +1,18 @@
+{
+  "name": "MoTA Unified Tribal Scholarship Portal",
+  "short_name": "MoTA NTSP",
+  "description": "Ministry of Tribal Affairs Single-Window 5-Scheme Scholarship & DBT Portal",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#002138",
+  "theme_color": "#002B49",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

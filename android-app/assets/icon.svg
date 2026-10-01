@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" rx="36" fill="#002B49"/>
+  <rect x="0" y="0" width="192" height="12" fill="#FF9933"/>
+  <rect x="0" y="180" width="192" height="12" fill="#138808"/>
+  <circle cx="96" cy="96" r="60" fill="#0A3F66" stroke="#E87722" stroke-width="4"/>
+  <text x="96" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="900" fill="#FFFFFF" text-anchor="middle">MoTA</text>
+  <text x="96" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#FF9933" text-anchor="middle">NTSP 2026</text>
+  <text x="96" y="136" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="bold" fill="#CBD5E1" text-anchor="middle">GOVT OF INDIA</text>
+</svg>

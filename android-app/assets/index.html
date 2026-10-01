@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>National Tribal Scholarship Portal (NTSP) | Ministry of Tribal Affairs, Govt of India</title>
+  
+  <!-- PWA & Mobile Meta Tags -->
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+  <link rel="apple-touch-icon" href="/icon.svg" />
+  <meta name="theme-color" content="#002B49" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="MoTA NTSP" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Google Fonts: Inter & Noto Sans Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="bg-[#E9EEF4] text-[#1E293B] min-h-screen flex flex-col font-sans antialiased">
+
+  <!-- TOP NATIONAL TRICOLOR HEADER BAND -->
+  <div class="h-1.5 w-full flex sticky top-0 z-50">
+    <div class="bg-[#FF9933] flex-1"></div>
+    <div class="bg-[#FFFFFF] flex-1"></div>
+    <div class="bg-[#138808] flex-1"></div>
+  </div>
+
+  <!-- GOV.IN CITIZEN UTILITY ACCESSIBILITY BAR -->
+  <div class="bg-[#002138] text-[#CBD5E1] text-[11px] px-3 py-1 border-b border-[#00385F]">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-2">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-white tracking-wide">भारत सरकार</span> |
+        <span class="text-slate-200">Government of India</span>
+        <span class="hidden sm:inline text-slate-400">| राष्ट्रीय जनजातीय छात्रवृत्ति मिशन</span>
+      </div>
+      <div class="flex items-center gap-3">
+        <!-- Install on Mobile Button -->
+        <button id="btnOpenMobileInstall" class="bg-[#E87722] hover:bg-amber-600 text-white font-bold px-2 py-0.5 rounded flex items-center gap-1.5 text-[10px] shadow transition-all">
+          <i class="fa-solid fa-mobile-screen-button"></i>
+          <span>Install on Mobile (ऐप इंस्टॉल करें)</span>
+        </button>
+        <span class="text-slate-500">|</span>
+        <!-- Text Resizer -->
+        <div class="flex items-center gap-1.5 font-bold">
+          <button id="btnTextDec" class="px-1 hover:text-white" title="Decrease font">A-</button>
+          <button id="btnTextNorm" class="px-1 hover:text-white" title="Default font">A</button>
+          <button id="btnTextInc" class="px-1 hover:text-white" title="Increase font">A+</button>
+        </div>
+        <span class="text-slate-500">|</span>
+        <!-- Language Switcher -->
+        <div class="flex items-center gap-1 bg-[#001726] px-2 py-0.5 rounded border border-slate-700">
+          <i class="fa-solid fa-globe text-[#FF9933]"></i>
+          <select id="langSelect" class="bg-transparent text-white text-[11px] focus:outline-none cursor-pointer">
+            <option value="en" class="bg-[#002138]">English</option>
+            <option value="hi" class="bg-[#002138]">हिन्दी (Hindi)</option>
+            <option value="or" class="bg-[#002138]">ଓଡ଼ିଆ (Odia)</option>
+            <option value="bn" class="bg-[#002138]">বাংলা (Bengali)</option>
+            <option value="st" class="bg-[#002138]">ᱥᱟᱱᱛᱟᱲᱤ (Santali)</option>
+            <option value="mr" class="bg-[#002138]">मराठी (Marathi)</option>
+            <option value="te" class="bg-[#002138]">తెలుగు (Telugu)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AUTHENTIC GOVERNMENT HEADER -->
+  <header class="bg-white border-b-2 border-[#E87722] shadow-sm py-2.5 px-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-3">
+      
+      <!-- Ashoka Emblem & Ministry Info -->
+      <div class="flex items-center gap-3">
+        <!-- Ashoka Emblem SVG -->
+        <div class="w-10 h-14 flex items-center justify-center flex-shrink-0">
+          <svg viewBox="0 0 100 130" class="w-full h-full fill-[#002B49]">
+            <path d="M50 8 C32 8, 22 22, 22 38 C22 48, 28 58, 36 64 L36 78 L26 84 L26 100 L74 100 L74 84 L64 78 L64 64 C72 58, 78 48, 78 38 C78 22, 68 8, 50 8 Z M45 42 L55 42 L50 22 Z M50 106 C32 106, 32 122, 50 122 C68 122, 68 106, 50 106 Z M35 114 L65 114"/>
+            <text x="50" y="128" font-size="8" text-anchor="middle" font-weight="bold" fill="#002B49">सत्यमेव जयते</text>
+          </svg>
+        </div>
+        <div class="border-l-2 border-slate-200 pl-3">
+          <div class="text-[11px] font-bold text-slate-600 uppercase tracking-wider font-['Noto_Sans_Devanagari']">जनजातीय कार्य मंत्रालय</div>
+          <div class="text-sm sm:text-base font-black text-[#002B49] tracking-tight leading-tight">MINISTRY OF TRIBAL AFFAIRS</div>
+          <div class="text-[11px] font-bold text-[#E87722]">National Tribal Scholarship Portal (NTSP)</div>
+        </div>
+      </div>
+
+      <!-- Government Initiatives Co-Badges -->
+      <div class="hidden md:flex items-center gap-3 text-center text-[10px] font-bold">
+        <div class="bg-[#F0F4F8] border border-slate-300 px-2 py-1 rounded text-[#002B49]">
+          <span class="text-blue-700 block font-black">DigiLocker</span>
+          Verified Direct
+        </div>
+        <div class="bg-[#F0F4F8] border border-slate-300 px-2 py-1 rounded text-[#002B49]">
+          <span class="text-emerald-700 block font-black">DBT BHARAT</span>
+          PFMS Direct
+        </div>
+        <div class="bg-[#F0F4F8] border border-slate-300 px-2 py-1 rounded text-[#002B49]">
+          <span class="text-[#E87722] block font-black">APAAR ID</span>
+          EduLocker
+        </div>
+      </div>
+
+      <!-- Student OTR Profile Header Box -->
+      <div class="flex items-center gap-2 bg-[#EBF3FB] border border-[#BFDBFE] p-1.5 sm:px-3 sm:py-1.5 rounded-lg shadow-sm">
+        <div class="w-8 h-8 rounded-full bg-[#002B49] text-white flex items-center justify-center font-bold text-xs">
+          BS
+        </div>
+        <div class="hidden sm:block text-left text-xs">
+          <div class="font-bold text-[#002B49]">Birsa Soren</div>
+          <div class="text-[10px] text-slate-600 font-mono">OTR: <span class="text-blue-800 font-bold">JH2026ST884910</span></div>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- OFFICIAL GOV NOTICE BANNER -->
+  <div class="bg-[#FFF8E7] border-b border-[#FFE08A] text-[#7A4B00] text-xs px-4 py-1 flex items-center gap-2">
+    <span class="bg-[#E87722] text-white text-[9px] font-bold px-1.5 py-0.5 rounded uppercase flex-shrink-0">Notice</span>
+    <marquee class="font-medium text-xs">
+      AY 2026-27 ST Scholarship Applications are LIVE • Zero-Rejection Policy: 15-day rectification window enabled • Mandatory Aadhaar-Seeded Bank Account for Direct Benefit Transfer (DBT) • Pre-Matric, Post-Matric, Top Class, NFST Fellowship & NOS Schemes unified under Single Login.
+    </marquee>
+  </div>
+
+  <!-- MAIN APP CONTAINER (MOBILE-FIRST DESKTOP HYBRID VIEW) -->
+  <div class="flex-1 max-w-6xl w-full mx-auto p-3 sm:p-5 flex flex-col md:flex-row gap-5">
+    
+    <!-- LEFT NAVIGATION SIDEBAR (Gov Portal Style) -->
+    <aside class="w-full md:w-64 bg-white border border-slate-200 rounded-xl p-3 shadow-sm flex flex-col justify-between space-y-4">
+      <div class="space-y-1">
+        <div class="px-3 py-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider">Citizen Services</div>
+        
+        <button id="tabDashboard" class="side-nav-btn active w-full text-left px-3 py-2.5 rounded-lg text-xs font-bold flex items-center gap-2.5 bg-[#002B49] text-white transition-all shadow-sm">
+          <i class="fa-solid fa-house w-4 text-center text-[#FF9933]"></i>
+          <span>My Applications & DBT</span>
+        </button>
+
+        <button id="tabApply" class="side-nav-btn w-full text-left px-3 py-2.5 rounded-lg text-xs font-semibold text-slate-700 hover:bg-[#F0F4F8] flex items-center gap-2.5 transition-all">
+          <i class="fa-solid fa-file-signature w-4 text-center text-blue-600"></i>
+          <span>Apply Scheme (5 Schemes)</span>
+        </button>
+
+        <button id="tabDigiLocker" class="side-nav-btn w-full text-left px-3 py-2.5 rounded-lg text-xs font-semibold text-slate-700 hover:bg-[#F0F4F8] flex items-center gap-2.5 transition-all">
+          <i class="fa-solid fa-id-card-clip w-4 text-center text-indigo-600"></i>
+          <span>DigiLocker & APAAR Vault</span>
+        </button>
+
+        <button id="tabSanctionSlip" class="side-nav-btn w-full text-left px-3 py-2.5 rounded-lg text-xs font-semibold text-slate-700 hover:bg-[#F0F4F8] flex items-center gap-2.5 transition-all">
+          <i class="fa-solid fa-receipt w-4 text-center text-emerald-600"></i>
+          <span>Sanction Order & Advice</span>
+        </button>
+
+        <button id="tabMinistryGap" class="side-nav-btn w-full text-left px-3 py-2.5 rounded-lg text-xs font-semibold text-slate-700 hover:bg-[#F0F4F8] flex items-center gap-2.5 transition-all">
+          <i class="fa-solid fa-chart-pie w-4 text-center text-[#E87722]"></i>
+          <span>Outreach Gap Analytics</span>
+        </button>
+      </div>
+
+      <!-- Student Profile Card in Sidebar -->
+      <div class="bg-[#F8FAFC] border border-slate-200 rounded-lg p-3 text-xs space-y-1.5">
+        <div class="text-[10px] font-bold uppercase text-slate-500">Beneficiary Profile</div>
+        <div class="font-bold text-slate-900">Birsa Soren (ST - PVTG)</div>
+        <div class="text-[11px] text-slate-600 font-mono">APAAR: 9843-1289-4401</div>
+        <div class="pt-1 flex items-center gap-1.5 text-emerald-700 font-bold text-[11px]">
+          <i class="fa-solid fa-circle-check"></i> Aadhaar-NPCI Linked
+        </div>
+      </div>
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT WORKSPACE -->
+    <main class="flex-1 space-y-5">
+
+      <!-- ========================================== -->
+      <!-- VIEW 1: MY APPLICATIONS & 5-STAGE DBT TRACKER -->
+      <!-- ========================================== -->
+      <div id="viewDashboard" class="space-y-4">
+        
+        <!-- Summary Cards Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          
+          <!-- Card 1 -->
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold text-slate-500 uppercase">Aadhaar-DBT Health</span>
+              <div class="text-xs sm:text-sm font-bold text-emerald-700 flex items-center gap-1 mt-0.5">
+                <i class="fa-solid fa-circle-check"></i> Linked (SBI •••• 4891)
+              </div>
+              <span class="text-[10px] text-slate-500">NPCI Mapper Validated</span>
+            </div>
+            <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center text-base">
+              <i class="fa-solid fa-building-columns"></i>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold text-slate-500 uppercase">Single-Benefit Rule</span>
+              <div class="text-xs sm:text-sm font-bold text-blue-800 flex items-center gap-1 mt-0.5">
+                <i class="fa-solid fa-shield-halved"></i> 1 Active Benefit
+              </div>
+              <span class="text-[10px] text-slate-500">No Double-Claim Conflict</span>
+            </div>
+            <div class="w-9 h-9 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center text-base">
+              <i class="fa-solid fa-user-check"></i>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="bg-white p-3.5 rounded-xl border border-slate-200 shadow-sm flex items-center justify-between">
+            <div>
+              <span class="text-[10px] font-bold text-slate-500 uppercase">Sanctioned Amount</span>
+              <div class="text-sm sm:text-base font-black text-[#002B49] font-mono mt-0.5">
+                ₹ 48,000.00
+              </div>
+              <span class="text-[10px] text-amber-700 font-bold">PFMS UTR: SBIN202688419</span>
+            </div>
+            <div class="w-9 h-9 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center text-base">
+              <i class="fa-solid fa-indian-rupee-sign"></i>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Real-Time 5-Stage Visual Stepper Container -->
+        <div class="bg-white border border-slate-200 rounded-xl p-4 sm:p-5 shadow-sm space-y-4">
+          
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-3">
+            <div>
+              <span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-0.5 rounded font-mono">NSP INTEGRATION</span>
+              <h3 class="text-sm sm:text-base font-bold text-[#002B49] mt-1">Post-Matric Scholarship for ST Students (2026-27)</h3>
+              <p class="text-[11px] text-slate-500 mt-0.5">
+                App No: <strong class="font-mono text-slate-800">MOTA-2026-POST-4891</strong> • Inst: <strong class="text-slate-700">BIT Sindri (AISHE: C-44120)</strong>
+              </p>
+            </div>
+            <div>
+              <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-bold bg-amber-100 text-amber-800 border border-amber-300">
+                <i class="fa-solid fa-spinner fa-spin text-amber-600"></i> Stage 4: PFMS Pushed
+              </span>
+            </div>
+          </div>
+
+          <!-- 5-Stage Stepper -->
+          <div>
+            <div class="text-[11px] font-bold text-slate-600 uppercase tracking-wider mb-3">
+              Official 5-Stage Verification & Direct Benefit Transfer Progress
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-5 gap-2.5 text-xs">
+              
+              <!-- Step 1 -->
+              <div class="p-2.5 rounded-lg border-2 border-emerald-500 bg-emerald-50/40">
+                <div class="flex items-center gap-1.5 font-bold text-emerald-800 text-[11px]">
+                  <span class="w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[9px]">✓</span>
+                  1. Lodged
+                </div>
+                <div class="text-[10px] text-slate-600 mt-1">APAAR & OTR Form</div>
+                <div class="text-[9px] text-slate-400 font-mono mt-1">10 Aug 2026</div>
+              </div>
+
+              <!-- Step 2 -->
+              <div class="p-2.5 rounded-lg border-2 border-emerald-500 bg-emerald-50/40">
+                <div class="flex items-center gap-1.5 font-bold text-emerald-800 text-[11px]">
+                  <span class="w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[9px]">✓</span>
+                  2. Verified
+                </div>
+                <div class="text-[10px] text-slate-600 mt-1">DigiLocker & College</div>
+                <div class="text-[9px] text-slate-400 font-mono mt-1">14 Aug 2026</div>
+              </div>
+
+              <!-- Step 3 -->
+              <div class="p-2.5 rounded-lg border-2 border-emerald-500 bg-emerald-50/40">
+                <div class="flex items-center gap-1.5 font-bold text-emerald-800 text-[11px]">
+                  <span class="w-4 h-4 rounded-full bg-emerald-600 text-white flex items-center justify-center text-[9px]">✓</span>
+                  3. Sanctioned
+                </div>
+                <div class="text-[10px] text-slate-600 mt-1">DWO Approved</div>
+                <div class="text-[9px] text-slate-400 font-mono mt-1">01 Sep 2026</div>
+              </div>
+
+              <!-- Step 4 -->
+              <div class="p-2.5 rounded-lg border-2 border-amber-500 bg-amber-50 shadow-sm">
+                <div class="flex items-center gap-1.5 font-bold text-amber-900 text-[11px]">
+                  <span class="w-4 h-4 rounded-full bg-amber-600 text-white flex items-center justify-center text-[9px] animate-pulse">4</span>
+                  4. PFMS Pushed
+                </div>
+                <div class="text-[10px] text-slate-700 font-semibold mt-1">UTR Issued to Bank</div>
+                <div class="text-[9px] text-amber-800 font-mono font-bold mt-1">15 Sep 2026</div>
+              </div>
+
+              <!-- Step 5 -->
+              <div class="p-2.5 rounded-lg border border-slate-200 bg-slate-50 opacity-60">
+                <div class="flex items-center gap-1.5 font-bold text-slate-500 text-[11px]">
+                  <span class="w-4 h-4 rounded-full bg-slate-300 text-slate-600 flex items-center justify-center text-[9px]">5</span>
+                  5. Bank Credit
+                </div>
+                <div class="text-[10px] text-slate-500 mt-1">Aadhaar APB Direct</div>
+                <div class="text-[9px] text-slate-400 font-mono mt-1">Est: 24-48 hrs</div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Unified 5 MoTA Schemes Card Grid -->
+        <div class="space-y-2">
+          <div class="flex items-center justify-between">
+            <h3 class="text-xs font-bold text-[#002B49] uppercase tracking-wider">
+              All 5 MoTA Scholarship & Fellowship Schemes
+            </h3>
+            <span class="text-[11px] text-slate-500">Pre-Matric • Post-Matric • Top Class • NFST • NOS</span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3" id="schemesCardsContainer">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW 2: UNIFIED SCHOLARSHIP APPLICATION FORM -->
+      <!-- ========================================== -->
+      <div id="viewApply" class="hidden space-y-4">
+        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
+          
+          <div class="border-b border-slate-200 pb-3">
+            <h3 class="text-sm sm:text-base font-bold text-[#002B49] flex items-center gap-2">
+              <i class="fa-solid fa-file-pen text-[#E87722]"></i> Form ST-2026: Unified Scholarship Application
+            </h3>
+            <p class="text-xs text-slate-500 mt-0.5">Automated DigiLocker verification with Single-Benefit De-Duplication Protection</p>
+          </div>
+
+          <form id="formSchemeApplication" class="space-y-3.5 text-xs">
+            
+            <!-- Scheme Selector -->
+            <div>
+              <label class="block font-bold text-slate-700 mb-1">Select Scholarship Scheme <span class="text-rose-600">*</span></label>
+              <select id="inputSchemeType" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-800 focus:ring-2 focus:ring-[#002B49] focus:outline-none">
+                <option value="PRE_MATRIC">1. Pre-Matric Scholarship for ST Students (Classes 9 & 10)</option>
+                <option value="POST_MATRIC" selected>2. Post-Matric Scholarship for ST Students (Classes 11 to PG)</option>
+                <option value="TOP_CLASS">3. Top Class Education Scheme for ST Students (IITs, IIMs, AIIMS, NLUs, NITs)</option>
+                <option value="NFST">4. National Fellowship for Higher Education of ST Students (NFST - M.Phil / Ph.D.)</option>
+                <option value="NOS">5. National Overseas Scholarship for ST Students (NOS - Masters / Ph.D. Abroad)</option>
+              </select>
+            </div>
+
+            <!-- Beneficiary Identifiers -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Student Full Name <span class="text-rose-600">*</span></label>
+                <input type="text" id="inputStudentName" value="Birsa Soren" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs" required />
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">APAAR / EduLocker ID <span class="text-rose-600">*</span></label>
+                <input type="text" id="inputApaarId" value="9843-1289-4401" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono" required />
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Aadhaar Vault Token <span class="text-rose-600">*</span></label>
+                <input type="text" value="XXXX-XXXX-8812" readonly class="w-full bg-slate-100 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-500 font-mono" />
+              </div>
+            </div>
+
+            <!-- State, Tribe, Caste Cert -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Domicile State <span class="text-rose-600">*</span></label>
+                <select id="inputState" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs">
+                  <option value="Jharkhand" selected>Jharkhand</option>
+                  <option value="Odisha">Odisha</option>
+                  <option value="Chhattisgarh">Chhattisgarh</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                  <option value="Gujarat">Gujarat</option>
+                  <option value="Telangana">Telangana</option>
+                  <option value="Maharashtra">Maharashtra</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Tribe / PVTG Community <span class="text-rose-600">*</span></label>
+                <select id="inputTribe" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs">
+                  <option value="Santhal">Santhal</option>
+                  <option value="Munda">Munda</option>
+                  <option value="Oraon">Oraon</option>
+                  <option value="Birhor" selected>Birhor (PVTG - Priority)</option>
+                  <option value="Asur">Asur (PVTG - Priority)</option>
+                  <option value="Gond">Gond</option>
+                  <option value="Bhil">Bhil</option>
+                </select>
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Caste Certificate No. <span class="text-rose-600">*</span></label>
+                <input type="text" id="inputCasteCert" value="JH-ST-2024-998120" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono" required />
+              </div>
+            </div>
+
+            <!-- Conditional Fields for NFST / NOS -->
+            <div id="containerExtraFields" class="hidden bg-amber-50 p-3 rounded-lg border border-amber-200 space-y-2">
+              <span class="text-xs font-bold text-amber-900 flex items-center gap-1">
+                <i class="fa-solid fa-award"></i> Fellowship / Foreign Admission Credentials
+              </span>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block font-bold text-slate-700 mb-1">UGC-NTA NET/JRF Roll No (for NFST)</label>
+                  <input type="text" id="inputNetRoll" placeholder="e.g., NTA-NET-2026-8810" class="w-full bg-white border border-slate-300 rounded px-2.5 py-1.5 text-xs font-mono" />
+                </div>
+                <div>
+                  <label class="block font-bold text-slate-700 mb-1">QS World Ranked University (for NOS)</label>
+                  <input type="text" id="inputForeignUniv" placeholder="e.g., University of Melbourne (QS #14)" class="w-full bg-white border border-slate-300 rounded px-2.5 py-1.5 text-xs" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Income & Session -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Annual Family Income (₹) <span class="text-rose-600">*</span></label>
+                <input type="number" id="inputIncome" value="140000" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs" required />
+                <span class="text-[10px] text-slate-500">Under ₹2,50,000 ceiling for Post-Matric; ₹6,00,000 for Top Class</span>
+              </div>
+              <div>
+                <label class="block font-bold text-slate-700 mb-1">Academic Session Year <span class="text-rose-600">*</span></label>
+                <select id="inputYear" class="w-full bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs font-mono">
+                  <option value="2026" selected>2026 - 2027</option>
+                  <option value="2025">2025 - 2026</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Single Benefit Legal Declaration -->
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg flex items-start gap-2">
+              <input type="checkbox" id="checkDeclaration" checked class="mt-0.5 rounded text-[#002B49] cursor-pointer" required />
+              <label for="checkDeclaration" class="text-[11px] text-slate-600 leading-tight cursor-pointer">
+                I declare that I belong to Scheduled Tribe (ST) and am NOT drawing any other Central / State Government scholarship concurrently for AY 2026-27. I authorize Ministry of Tribal Affairs to verify my records with DigiLocker, PFMS & NPCI.
+              </label>
+            </div>
+
+            <!-- Validation Error Alert Box -->
+            <div id="boxApplyError" class="hidden p-3 rounded-lg bg-rose-50 border border-rose-300 text-xs text-rose-800 font-semibold"></div>
+
+            <div class="pt-2 flex items-center gap-3">
+              <button type="submit" id="btnSubmitForm" class="bg-[#002B49] hover:bg-slate-900 text-white font-bold px-5 py-2.5 rounded-lg text-xs transition-all shadow flex items-center gap-2">
+                <i class="fa-solid fa-paper-plane"></i> Submit & Auto-Verify Application
+              </button>
+              <button type="reset" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-semibold px-4 py-2.5 rounded-lg text-xs">
+                Reset
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW 3: DIGILOCKER & APAAR DIGITAL VAULT  -->
+      <!-- ========================================== -->
+      <div id="viewDigiLocker" class="hidden space-y-4">
+        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
+          
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-3">
+            <div>
+              <h3 class="text-sm sm:text-base font-bold text-[#002B49] flex items-center gap-2">
+                <i class="fa-solid fa-id-card-clip text-blue-700"></i> DigiLocker & APAAR Digital Document Vault
+              </h3>
+              <p class="text-xs text-slate-500 mt-0.5">Instant cryptographic verification with Zero Manual Paperwork</p>
+            </div>
+            <button id="btnSyncDigiLocker" class="bg-blue-700 hover:bg-blue-800 text-white font-bold px-3.5 py-1.5 rounded-lg text-xs flex items-center gap-2 transition-all shadow-sm">
+              <i class="fa-solid fa-arrows-rotate" id="iconSyncDigi"></i> Re-Sync with DigiLocker
+            </button>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            
+            <!-- ST Certificate -->
+            <div class="p-3.5 rounded-xl border-2 border-emerald-400 bg-emerald-50/30 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold text-emerald-800 bg-emerald-100 px-2 py-0.5 rounded">DIGILOCKER VERIFIED</span>
+                <i class="fa-solid fa-circle-check text-emerald-600"></i>
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">ST Caste Certificate</div>
+                <div class="text-[11px] text-slate-600 font-mono">JH-ST-2024-998120</div>
+              </div>
+              <div class="text-[10px] text-slate-500 pt-2 border-t border-slate-200">
+                Category: <strong class="text-slate-700">Santhal (PVTG)</strong>
+              </div>
+            </div>
+
+            <!-- APAAR ID Card -->
+            <div class="p-3.5 rounded-xl border-2 border-blue-400 bg-blue-50/30 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold text-blue-800 bg-blue-100 px-2 py-0.5 rounded">APAAR LINKED</span>
+                <i class="fa-solid fa-graduation-cap text-blue-600"></i>
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">APAAR / EduLocker ID</div>
+                <div class="text-[11px] text-slate-600 font-mono">9843-1289-4401</div>
+              </div>
+              <div class="text-[10px] text-slate-500 pt-2 border-t border-slate-200">
+                Academic Bank of Credits: <strong class="text-slate-700">72 Credits</strong>
+              </div>
+            </div>
+
+            <!-- Income Certificate -->
+            <div class="p-3.5 rounded-xl border-2 border-amber-400 bg-amber-50/30 space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="text-[10px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded">INCOME CERTIFIED</span>
+                <i class="fa-solid fa-file-invoice-dollar text-amber-600"></i>
+              </div>
+              <div>
+                <div class="text-xs font-bold text-slate-900">Family Income Certificate</div>
+                <div class="text-[11px] text-slate-600 font-mono">₹ 1,40,000 / annum</div>
+              </div>
+              <div class="text-[10px] text-slate-500 pt-2 border-t border-slate-200">
+                Authority: <strong class="text-slate-700">CO Office, Ranchi</strong>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW 4: OFFICIAL PRINTABLE SANCTION ORDER  -->
+      <!-- ========================================== -->
+      <div id="viewSanctionSlip" class="hidden space-y-4">
+        <div class="bg-white border-2 border-slate-300 rounded-xl p-6 shadow-sm space-y-5 print:border-none print:shadow-none max-w-2xl mx-auto">
+          
+          <!-- Official Gov Header -->
+          <div class="text-center border-b-2 border-slate-800 pb-3 space-y-0.5">
+            <div class="text-[11px] font-bold uppercase tracking-widest text-slate-600">भारत सरकार | Government of India</div>
+            <div class="text-sm font-black text-[#002B49]">MINISTRY OF TRIBAL AFFAIRS (जनजातीय कार्य मंत्रालय)</div>
+            <div class="text-xs font-bold text-[#E87722]">DIRECT BENEFIT TRANSFER PROVISIONAL SANCTION ORDER</div>
+          </div>
+
+          <!-- Sanction Metadata -->
+          <div class="grid grid-cols-2 gap-3 text-xs">
+            <div>
+              <span class="text-slate-500 block text-[11px]">Sanction Ref No:</span>
+              <strong class="font-mono text-slate-900">MOTA/DBT/2026/88419</strong>
+            </div>
+            <div class="text-right">
+              <span class="text-slate-500 block text-[11px]">Sanction Date:</span>
+              <strong class="text-slate-900">15 September 2026</strong>
+            </div>
+            <div>
+              <span class="text-slate-500 block text-[11px]">Beneficiary Name:</span>
+              <strong class="text-slate-900">Birsa Soren (ST - PVTG)</strong>
+            </div>
+            <div class="text-right">
+              <span class="text-slate-500 block text-[11px]">APAAR ID:</span>
+              <strong class="font-mono text-slate-900">9843-1289-4401</strong>
+            </div>
+          </div>
+
+          <!-- Table of Entitlements -->
+          <table class="w-full text-left text-xs border border-slate-300">
+            <thead class="bg-slate-100 font-bold border-b border-slate-300">
+              <tr>
+                <th class="p-2">Scholarship Component</th>
+                <th class="p-2">Remarks</th>
+                <th class="p-2 text-right">Amount (INR)</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-200">
+              <tr>
+                <td class="p-2 font-semibold">Post-Matric ST Tuition Component</td>
+                <td class="p-2">Group I (Engineering)</td>
+                <td class="p-2 text-right font-mono font-bold">₹ 36,000.00</td>
+              </tr>
+              <tr>
+                <td class="p-2 font-semibold">Hosteller Maintenance Stipend</td>
+                <td class="p-2">10 Months @ ₹1,200/mo</td>
+                <td class="p-2 text-right font-mono font-bold">₹ 12,000.00</td>
+              </tr>
+              <tr class="bg-slate-50 font-bold">
+                <td class="p-2" colspan="2">TOTAL SANCTIONED DISBURSEMENT</td>
+                <td class="p-2 text-right font-mono text-emerald-800 text-sm">₹ 48,000.00</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- PFMS Advice -->
+          <div class="p-2.5 bg-slate-50 border border-slate-200 rounded text-xs space-y-1">
+            <div><strong>Payment Channel:</strong> PFMS Aadhaar Payment Bridge (APB)</div>
+            <div><strong>PFMS UTR:</strong> <span class="font-mono font-bold text-slate-800">SBIN202688419082</span></div>
+            <div><strong>Bank A/c:</strong> State Bank of India •••• 4891</div>
+          </div>
+
+          <!-- Footer Signature & QR -->
+          <div class="flex items-center justify-between pt-3 border-t border-slate-200 text-xs">
+            <div class="text-center">
+              <div class="w-16 h-16 bg-slate-100 border border-slate-300 flex items-center justify-center font-mono text-[8px] text-slate-500">
+                [QR CODE]
+              </div>
+              <span class="text-[9px] text-slate-500 block mt-1">Scan to Verify</span>
+            </div>
+            <div class="text-right text-[11px]">
+              <div class="font-bold text-slate-900">Dr. Rajeshwar K. Tigga, IAS</div>
+              <div class="text-slate-600">Director (Scholarships & DBT)</div>
+              <div class="text-[10px] text-slate-500">Ministry of Tribal Affairs</div>
+            </div>
+          </div>
+
+          <div class="text-center pt-2">
+            <button onclick="window.print()" class="bg-[#002B49] hover:bg-slate-900 text-white font-bold px-4 py-2 rounded text-xs print:hidden shadow">
+              <i class="fa-solid fa-print"></i> Print Official Sanction Order
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- VIEW 5: OUTREACH & COVERAGE GAP ANALYTICS  -->
+      <!-- ========================================== -->
+      <div id="viewMinistryGap" class="hidden space-y-4">
+        <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm space-y-4">
+          
+          <div class="flex flex-wrap items-center justify-between gap-3 border-b border-slate-200 pb-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="bg-[#002B49] text-white text-[9px] font-bold px-2 py-0.5 rounded">MINISTRY DESK</span>
+                <h3 class="text-sm sm:text-base font-bold text-[#002B49]">Targeted Outreach & Coverage Gap Analytics</h3>
+              </div>
+              <p class="text-xs text-slate-500 mt-0.5">Cross-referencing UDISE+ and APAAR enrollment records to identify unenrolled ST students</p>
+            </div>
+            <button id="btnExportGapPlan" class="bg-emerald-700 hover:bg-emerald-800 text-white font-bold px-3 py-1.5 rounded-lg text-xs flex items-center gap-1.5 transition-all">
+              <i class="fa-solid fa-file-pdf"></i> Export DWO Action Plan
+            </button>
+          </div>
+
+          <div class="overflow-x-auto rounded-lg border border-slate-200 text-xs">
+            <table class="w-full text-left">
+              <thead class="bg-slate-100 font-bold border-b border-slate-200 text-slate-700">
+                <tr>
+                  <th class="p-2.5">District / Tribal Belt</th>
+                  <th class="p-2.5">Enrolled ST (UDISE+)</th>
+                  <th class="p-2.5">Scholarships Availed</th>
+                  <th class="p-2.5">Unreached ST Students</th>
+                  <th class="p-2.5">Coverage %</th>
+                  <th class="p-2.5">Targeted Intervention</th>
+                </tr>
+              </thead>
+              <tbody id="bodyGapAnalytics" class="divide-y divide-slate-200 text-slate-700">
+                <!-- Rendered by JS -->
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- FLOATING JAGO AI MULTILINGUAL VOICE GUIDE -->
+  <div id="containerJagoWidget" class="fixed bottom-5 right-5 z-50">
+    
+    <!-- Floating Trigger Button -->
+    <button id="btnToggleJago" class="bg-gradient-to-r from-emerald-600 to-teal-700 text-white p-3 rounded-full shadow-2xl hover:scale-105 transition-all flex items-center gap-2 font-bold text-xs border-2 border-white">
+      <i class="fa-solid fa-robot text-base"></i>
+      <span class="hidden sm:inline">Ask JAGO (जागो)</span>
+    </button>
+
+    <!-- Chat Modal Window -->
+    <div id="modalJagoChat" class="hidden absolute bottom-14 right-0 w-[340px] sm:w-[380px] h-[500px] bg-white border border-slate-300 rounded-2xl shadow-2xl flex flex-col overflow-hidden text-slate-800">
+      
+      <!-- Modal Header -->
+      <div class="bg-[#002B49] text-white p-3 flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <div class="w-7 h-7 rounded-full bg-emerald-500 text-slate-950 font-bold flex items-center justify-center text-xs">
+            🤖
+          </div>
+          <div>
+            <h4 class="text-xs font-bold leading-tight">JAGO Multilingual Assistant</h4>
+            <p class="text-[10px] text-emerald-300 font-mono">Bhashini AI Voice-in Voice-out</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-1">
+          <button id="btnVoiceTtsToggle" class="text-slate-300 hover:text-white p-1" title="Toggle Voice Output">
+            <i class="fa-solid fa-volume-high text-emerald-400" id="iconTtsVoice"></i>
+          </button>
+          <button id="btnCloseJagoModal" class="text-slate-300 hover:text-white p-1">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Action Prompt Chips -->
+      <div class="bg-slate-100 p-2 border-b border-slate-200 flex gap-1.5 overflow-x-auto scrollbar-none text-[11px]">
+        <button class="chip-prompt bg-white text-slate-700 hover:text-emerald-700 px-2.5 py-1 rounded-full border border-slate-300 whitespace-nowrap font-medium">
+          💸 DBT Status Check
+        </button>
+        <button class="chip-prompt bg-white text-slate-700 hover:text-emerald-700 px-2.5 py-1 rounded-full border border-slate-300 whitespace-nowrap font-medium">
+          🎓 NFST Fellowship
+        </button>
+        <button class="chip-prompt bg-white text-slate-700 hover:text-emerald-700 px-2.5 py-1 rounded-full border border-slate-300 whitespace-nowrap font-medium">
+          ✈️ NOS Overseas Guide
+        </button>
+      </div>
+
+      <!-- Chat History Stream -->
+      <div id="listJagoMessages" class="flex-1 p-3 space-y-3 overflow-y-auto text-xs bg-slate-50">
+        <div class="flex items-start gap-2">
+          <div class="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-[10px] flex-shrink-0 font-bold">
+            🤖
+          </div>
+          <div class="bg-white border border-slate-200 p-2.5 rounded-xl rounded-tl-none shadow-sm text-slate-800 leading-relaxed">
+            Johar & Namaste! I am <strong>JAGO</strong>, your 24/7 AI guide for MoTA Scholarships. You can speak or ask questions in Hindi, English, Odia, Santali, Bengali, Marathi, or Telugu.
+          </div>
+        </div>
+      </div>
+
+      <!-- Input & Push To Talk -->
+      <div class="p-2.5 bg-white border-t border-slate-200 flex items-center gap-2">
+        <button id="btnVoicePushToTalk" class="w-9 h-9 rounded-lg bg-slate-100 hover:bg-emerald-100 text-slate-700 hover:text-emerald-700 border border-slate-300 flex items-center justify-center transition-all" title="Push To Talk (Speak)">
+          <i class="fa-solid fa-microphone" id="iconMicActive"></i>
+        </button>
+        <input type="text" id="inputJagoQuery" placeholder="Ask in Hindi, English, Odia, Santali..." class="flex-1 bg-slate-50 border border-slate-300 rounded-lg px-3 py-2 text-xs text-slate-800 focus:outline-none focus:border-[#002B49]" />
+        <button id="btnSendJagoMessage" class="w-9 h-9 rounded-lg bg-[#002B49] hover:bg-slate-900 text-white font-bold flex items-center justify-center transition-all">
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- OFFICIAL NIC GOVERNMENT FOOTER -->
+  <footer class="bg-[#002138] text-white border-t-4 border-[#FF9933] py-5 px-4 text-xs mt-auto">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-4">
+      <div class="space-y-1">
+        <div class="font-bold text-sm">जनजातीय कार्य मंत्रालय | Ministry of Tribal Affairs</div>
+        <div class="text-slate-300 text-[11px]">Government of India, Shastri Bhawan, Dr. Rajendra Prasad Road, New Delhi - 110001</div>
+        <div class="text-slate-400 text-[10px]">Designed and hosted by National Informatics Centre (NIC). Compliant with GIGW 3.0 standards.</div>
+      </div>
+      <div class="text-right text-[11px] text-slate-300 space-y-0.5">
+        <div>National Scholarship Portal (NSP) • PFMS • Canara SFMP</div>
+        <div class="text-[10px] text-slate-400">© 2026 Ministry of Tribal Affairs. All Rights Reserved.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MOBILE APP INSTALLATION MODAL -->
+  <div id="modalMobileInstall" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white border-2 border-[#002B49] rounded-2xl shadow-2xl max-w-md w-full p-5 space-y-4 text-slate-800 relative">
+      
+      <!-- Close Button -->
+      <button id="btnCloseMobileInstall" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center font-bold">
+        ✕
+      </button>
+
+      <!-- Modal Title -->
+      <div class="flex items-center gap-3 border-b border-slate-200 pb-3">
+        <div class="w-10 h-10 rounded-xl bg-[#002B49] text-white flex items-center justify-center font-black text-lg flex-shrink-0">
+          🏛️
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-[#002B49]">Install MoTA Scholarship App on Mobile</h3>
+          <p class="text-[11px] text-slate-500">Government of India • Offline-Ready Native PWA</p>
+        </div>
+      </div>
+
+      <!-- Option 1: Direct 1-Click Native Install (If supported on current device) -->
+      <div id="nativeInstallPromptBox" class="p-3 bg-emerald-50 border border-emerald-300 rounded-xl space-y-2">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-emerald-900">📲 Direct 1-Tap App Install</span>
+          <span class="text-[9px] bg-emerald-200 text-emerald-800 font-bold px-2 py-0.5 rounded">Native PWA</span>
+        </div>
+        <p class="text-[11px] text-slate-600">Install as a standalone app on your device screen without typing the web address.</p>
+        <button id="btnTriggerNativeInstall" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-2 rounded-lg text-xs transition-all shadow flex items-center justify-center gap-2">
+          <i class="fa-solid fa-download"></i> Add to Mobile Home Screen (Install App)
+        </button>
+      </div>
+
+      <!-- Option 2: Scan QR Code with Phone Camera -->
+      <div class="p-3 bg-slate-50 border border-slate-200 rounded-xl space-y-3 text-center">
+        <div class="text-xs font-bold text-slate-800">📷 Scan with your Mobile Phone Camera:</div>
+        
+        <!-- Live QR Code Image via standard public QR generator -->
+        <div class="flex justify-center">
+          <div class="p-2 bg-white border-2 border-[#002B49] rounded-xl shadow-md inline-block">
+            <img id="qrCodeImg" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=http://10.227.13.34:3000" alt="Mobile QR Code" class="w-36 h-36 object-contain" />
+          </div>
+        </div>
+
+        <div class="text-[11px] text-slate-600">
+          Or open this link on your phone's browser:<br />
+          <a id="mobileIpLink" href="http://10.227.13.34:3000" target="_blank" class="font-mono font-bold text-blue-700 hover:underline break-all">http://10.227.13.34:3000</a>
+        </div>
+      </div>
+
+      <!-- How to Install Instructions -->
+      <div class="space-y-1.5 text-[11px] text-slate-600 border-t border-slate-200 pt-3">
+        <div class="font-bold text-slate-800">📱 How to Install:</div>
+        <div>• <strong>Android (Chrome/Edge):</strong> Open link $\to$ Tap <strong>"Add to Home screen"</strong> or <strong>"Install app"</strong>.</div>
+        <div>• <strong>iPhone (Safari):</strong> Open link $\to$ Tap Share button <i class="fa-solid fa-arrow-up-from-bracket"></i> $\to$ <strong>"Add to Home Screen"</strong>.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
